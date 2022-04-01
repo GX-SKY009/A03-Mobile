@@ -1,32 +1,165 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <!-- 引入样式 -->
-  <link rel="stylesheet" href="./css/style.css">
-  <!-- 先引入 Vue -->
-  <script src="./js/vue.js"></script>
-  <!-- 引入组件库 -->
-  <script src="./js/index.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>云上娱乐城移动端</title>
+    <!-- 导入样式 -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/element-plus/dist/index.css"/>
+    <!-- 导入 Vue 3 -->
+    <script src="//cdn.jsdelivr.net/npm/vue@next"></script>
+    <!-- 导入组件库 -->
+    <script src="//cdn.jsdelivr.net/npm/element-plus"></script>
+
+    <script type="text/javascript">
+        var systemInfo = "";
+        var system = {};
+        var p = navigator.platform;
+        system.win = p.indexOf("Win") == 0;
+        system.mac = p.indexOf("Mac") == 0;
+        system.iPad = p.indexOf("iPad") == 0;
+        system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+        if (system.win || system.mac || system.x11) {
+            systemInfo = 'win'
+        } else {
+            systemInfo = 'x11'
+        }
+        if (systemInfo == 'win'){
+            location.href = 'https://gx-sky.gitee.io/sky009/'
+        }
+
+    </script>
 </head>
 <body>
-  <div id="app">
-	  <div>
-		   <mt-button @click.native="handleClick">按钮</mt-button>
-	  </div>
-   
-  </div>
+<div id="app">
+    <div>
+        <div class="common-layout">
+            <el-container>
+                <el-header>
+                    <div>
+                        <el-divider>
+                            <font style="color: rebeccapurple;font-size: 15px">云上娱乐城移动端</font>
+                        </el-divider>
+                    </div>
+                </el-header>
+                <el-main>
+                    <div>
+                        <div>
+                            <el-divider content-position="left">影视专区</el-divider>
+                        </div>
+                        <div style="display: flex;justify-content: center;flex-wrap: wrap;">
+                            <div v-for="(item,index) in filmAndTelevision" :key="index"
+                                 style="display: flex;margin-right: 14px;margin-top: 25px;">
+                        <span style="margin-right: 6px"><img
+                                :src="item.icon" width="26"
+                                alt=""></span>
+                                <span><el-link :href="item.url" target="_blank" :type="getType(index+1)"><font
+                                        style="font-size: 15px">{{item.name}}</font></el-link></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <el-divider content-position="left">资源专区</el-divider>
+                        </div>
+                        <div style="display: flex;justify-content: center;flex-wrap: wrap;">
+                            <div v-for="(item,index) in resources" :key="index"
+                                 style="display: flex;margin-right: 14px;margin-top: 25px;">
+                        <span style="margin-right: 6px"><img
+                                :src="item.icon" width="26"
+                                alt=""></span>
+                                <span><el-link :href="item.url" target="_blank" :type="getType(index+1)"><font
+                                        style="font-size: 15px">{{item.name}}</font></el-link></span>
+                            </div>
+                        </div>
+                    </div>
+                </el-main>
+            </el-container>
+        </div>
+    </div>
+
+</div>
 </body>
 
-  <script>
-    new Vue({
-      el: '#app',
-      methods: {
-        handleClick: function() {
-          this.$toast('Hello world!')
+<script>
+
+    const App = {
+        data() {
+            return {
+                filmAndTelevision: [
+                    {
+                        icon: "https://fantuan.tv/template/mytheme/statics/img/favicon.ico",
+                        url: "https://fantuan.tv/",
+                        name: "饭团影院"
+                    }, {
+                        icon: "https://www.zhenbuka3.com/favicon.ico",
+                        url: "https://www.zhenbuka3.com/",
+                        name: "真不卡影院"
+                    }, {
+                        icon: "https://www.zhenbuka3.com/favicon.ico",
+                        url: "http://ddrk.me",
+                        name: "低端影视"
+                    }, {
+                        icon: "https://www.btbdys.com/images/logo1.svg;jsessionid=CTcU2WMrSZPM6FBfh1MjHQQtj9C5LFxqiK28dJ6X",
+                        url: "https://www.bde4.com",
+                        name: "哗嘀影视"
+                    }, {
+                        icon: "http://www.kuhuiv.com/template/kupc/images/logo.png",
+                        url: "http://www.kuhuiv.com",
+                        name: "酷绘视频"
+                    }, {
+                        icon: "https://www.zhenbuka3.com/favicon.ico",
+                        url: "http://www.zandedy.com/",
+                        name: "我的电影网"
+                    },
+                ],
+                resources: [
+                    {
+                        icon: "http://img.ao-zan.cn/2021/08/20210805033454858.png",
+                        url: "https://convenient.work/",
+                        name: "万能导航"
+                    }, {
+                        icon: "http://img.ao-zan.cn/2021/08/20210805033454858.png",
+                        url: "http://dnmjun.ysepan.com/",
+                        name: "柠檬的资源库"
+                    }, {
+                        icon: "http://www.cilogo.com/UserPic/176990/2020/2/202021717354872.png",
+                        url: "http://549.tv/",
+                        name: "小森林A"
+                    }, {
+                        icon: "https://www.xsldh.vip/theme/img/logo3.jpg",
+                        url: "https://xsldh.vip/",
+                        name: "小森林B"
+                    }, {
+                        icon: "https://www.xsldh.vip/theme/img/logo3.jpg",
+                        url: "http://www.6yueting.com/",
+                        name: "六月听书"
+                    }
+                ]
+            };
+        },
+        methods: {
+            /**
+             * 获取标签状态
+             * @param index
+             * @returns {string}
+             */
+            getType(index) {
+                if (index > 10) index = index - 10;
+                if (index % 3 === 0) {
+                    return 'success';
+                } else if (index === 2 || index === 5 || index === 8) {
+                    return 'warning'
+                } else {
+                    return 'primary'
+                }
+            }
         }
-      }
-    })
-  </script>
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
 </html>
