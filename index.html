@@ -13,7 +13,8 @@
     <!-- 导入组件库 -->
     <script src="//cdn.jsdelivr.net/npm/element-plus"></script>
 
-    <script type="text/javascript">
+    <script lang="ts">
+
         var systemInfo = "";
         var system = {};
         var p = navigator.platform;
@@ -26,16 +27,13 @@
         } else {
             systemInfo = 'x11'
         }
-        if (systemInfo == 'win'){
-            location.href = 'https://gx-sky.gitee.io/sky009/'
-        }
-
     </script>
 </head>
 <body>
 <div id="app">
     <div>
         <div class="common-layout">
+
             <el-container>
                 <el-header>
                     <div>
@@ -136,11 +134,42 @@
                         icon: "https://www.xsldh.vip/theme/img/logo3.jpg",
                         url: "http://www.6yueting.com/",
                         name: "六月听书"
+                    }, {
+                        icon: "https://img12.360buyimg.com/ddimg/jfs/t1/204871/30/6702/11614/614432d6E2f0a2c60/ddb893d0a75eff77.png",
+                        url: "https://fuliba123.net/",
+                        name: "福利吧导航"
+                    }, {
+                        icon: "https://tva1.sinaimg.cn/large/718153f4ly1gyr41ugu25j207i01x0su.jpg",
+                        url: "https://f.uliba.net/magnet2022.html",
+                        name: "70个可用的磁力搜索网站"
                     }
                 ]
             };
         },
+        mounted() {
+            this.initSystemInfo();
+        },
         methods: {
+            /**
+             * 初始化系统
+             */
+            initSystemInfo() {
+                if (systemInfo == 'win') {
+                    this.$messageBox.confirm(
+                        '检测到您的系统是PC.是否访问PC端?',
+                        '温馨提示',
+                        {
+                            confirmButtonText: '好的',
+                            cancelButtonText: '不，继续访问移动端',
+                            type: 'success',
+                        }
+                    ).then(() => {
+                        location.href = 'https://gx-sky.gitee.io/sky009/'
+                    }).catch(() => {
+
+                    })
+                }
+            },
             /**
              * 获取标签状态
              * @param index
