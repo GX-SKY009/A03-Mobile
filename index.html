@@ -13,21 +13,6 @@
     <!-- 导入组件库 -->
     <script src="//cdn.jsdelivr.net/npm/element-plus"></script>
 
-    <script lang="ts">
-
-        var systemInfo = "";
-        var system = {};
-        var p = navigator.platform;
-        system.win = p.indexOf("Win") == 0;
-        system.mac = p.indexOf("Mac") == 0;
-        system.iPad = p.indexOf("iPad") == 0;
-        system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
-        if (system.win || system.mac || system.x11) {
-            systemInfo = 'win'
-        } else {
-            systemInfo = 'x11'
-        }
-    </script>
 </head>
 <body>
 <div id="app">
@@ -154,7 +139,19 @@
              * 初始化系统
              */
             initSystemInfo() {
-                if (systemInfo == 'win') {
+                let systemInfo = "";
+                let system = {};
+                let p = navigator.platform;
+                system.win = p.indexOf("Win") === 0;
+                system.mac = p.indexOf("Mac") === 0;
+                system.iPad = p.indexOf("iPad") === 0;
+                system.x11 = (p === "X11") || (p.indexOf("Linux") === 0);
+                if (system.win || system.mac || system.x11) {
+                    systemInfo = 'win'
+                } else {
+                    systemInfo = 'x11'
+                }
+                if (systemInfo === 'win') {
                     this.$messageBox.confirm(
                         '检测到您的系统是PC.是否访问PC端?',
                         '温馨提示',
