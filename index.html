@@ -59,6 +59,13 @@
                         </div>
                     </div>
                 </el-main>
+                <el-footer>
+                    <div style="width:100%;position:absolute;bottom:0;left:0;text-align: center;opacity: 0.5;font-size: 12px;color: saddlebrown">
+                        <div><font>Posted by: 云上幻歌</font></div>
+                        <div style="margin-top: 10px;margin-bottom: 10px;">
+                            <font>Contact information: <a href="mailto:gx009@outlook.com">gx009@outlook.com</a>.</font></div>
+                    </div>
+                </el-footer>
             </el-container>
         </div>
     </div>
@@ -101,6 +108,10 @@
                         name: "万能导航"
                     }, {
                         icon: "http://img.ao-zan.cn/2021/08/20210805033454858.png",
+                        url: "https://convenient.work/folder/",
+                        name: "万能文件夹"
+                    }, {
+                        icon: "http://img.ao-zan.cn/2021/08/20210805033454858.png",
                         url: "http://dnmjun.ysepan.com/",
                         name: "柠檬的资源库"
                     }, {
@@ -128,7 +139,7 @@
             };
         },
         mounted() {
-            this.initSystemInfo();
+            //  this.initSystemInfo();
         },
         methods: {
             /**
